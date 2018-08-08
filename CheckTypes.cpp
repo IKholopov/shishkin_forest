@@ -6,12 +6,10 @@
 #include "DeclarationException.h"
 #include "Table.h"
 #include "TypeChecker.h"
-#include <unistd.h>
 
 extern std::unique_ptr<AST::Program> program;
 
 int main(void) {
-  //sleep(10);
   yyparse();
   if(program.get()) {
       try {
@@ -25,7 +23,7 @@ int main(void) {
         filler.Attach(symbolTable.release());
         filler.FillClassStruct();
         symbolTable.reset(filler.DetachTable());
-      } catch(SymbolTable::DeclarationException e) {
+      } catch(SymbolTable::DeclarationException& e) {
         std::cout << NF_RED << "Declaration error: " << e.what() << NF_RESET << std::endl;
         return 1;
       }

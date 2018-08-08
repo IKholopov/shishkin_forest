@@ -57,7 +57,7 @@ bool TypeChecker::CheckAST(AST::Program* root)
 {
     try {
         root->AcceptVisitor(this);
-    } catch (SymbolTable::DeclarationException e) {
+    } catch (SymbolTable::DeclarationException& e) {
         std::cout << NF_RED << "Declaration error: " << e.what() << NF_RESET << std::endl;
         return false;
     }

@@ -105,6 +105,11 @@ add_library(activation_records STATIC ${ActivationRecords_SRC})
 file(GLOB IR_SRC IR/*.cpp IR/Translate/*.cpp IR/Statements/*.cpp IR/Expressions/*.cpp)
 add_library(ir STATIC ${IR_SRC})
 
+# build library IRuntime
+file(GLOB IRUNTIME_SRC IRuntime/*.cpp)
+add_library(ir_runtime STATIC ${IRUNTIME_SRC})
+target_include_directories(ir_runtime PUBLIC IRuntime)
+
 # build library PrettyPrint
 file(GLOB PrettyPrint_SRC PrettyPrint/*.cpp)
 add_library(pretty_print STATIC ${PrettyPrint_SRC})

@@ -16,7 +16,7 @@ int main(void) {
   if(program.get()) {
       try {
         AST_VISITOR.ParseProgram(program.get());
-      } catch(SymbolTable::DeclarationException e) {
+      } catch(SymbolTable::DeclarationException& e) {
         std::cout << NF_RED << "Declaration error: " << e.what() << NF_RESET << std::endl;
       }
   }

@@ -59,9 +59,8 @@ public:
             r->SetColor(c);
         }
 
-        virtual const IR::Temp& GetReg() const override {
+        [[noreturn]] virtual const IR::Temp& GetReg() const override {
             assert(false);
-            return IR::Temp();
         }
 
         INode* GetL() const { return l; }

@@ -19,7 +19,7 @@ void TableVisitor::ParseProgram(AST::Program* program)
             printClassInfo(classInfo);
             table.FreeLastScope();
             std::cout << std::endl;
-        } catch(DeclarationException e) {
+        } catch(DeclarationException& e) {
             std::cout << NF_RED << "Declaration error:" << e.what() << NF_RESET << std::endl;
         }
     }

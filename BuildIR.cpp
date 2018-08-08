@@ -1,7 +1,6 @@
 #include "SymbolTable/TableFiller.h"
 
 #include <iostream>
-#include <unistd.h>
 
 #include "tokens.h"
 #include "DeclarationException.h"
@@ -23,7 +22,6 @@ int main(void) {
   SymbolTable::TableFiller filler;
   if(program.get()) {
       try {
-        //sleep(6);
         filler.FillTable(program.get());
         std::unique_ptr<SymbolTable::Table> symbolTable(filler.DetachTable());
         TypeChecker::TypeChecker checker(symbolTable.get());
@@ -155,7 +153,7 @@ int main(void) {
         }
         printerVariableGraph.PrintPostfix();
         printerLifecycle.PrintPostfix();
-      } catch(SymbolTable::DeclarationException e) {
+      } catch(SymbolTable::DeclarationException& e) {
         std::cout << NF_RED << "Declaration error: " << e.what() << NF_RESET << std::endl;
         return 1;
       }
